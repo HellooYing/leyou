@@ -1,0 +1,26 @@
+server:
+  port: 80
+spring:
+  application:
+    name: service-consumer
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+service-provider:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 3000 # 设置hystrix的超时时间为3s
+#      circuitBreaker:
+#        requestVolumeThreshold: 10 #触发熔断的最小请求次数
+#        sleepWindowInMilliseconds: 10000 #每次休眠多少毫秒
+#        errorThresholdPercentage: 50 #失败请求的最小占比
+feign:
+  hystrix:
+    enabled: true
