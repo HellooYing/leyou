@@ -1,7 +1,7 @@
 HELP.md
 /target/
 !.mvn/wrapper/maven-wrapper.jar
-*/target/
+target/
 /leyou-manage-web/
 ### STS ###
 .apt_generated
