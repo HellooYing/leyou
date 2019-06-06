@@ -39,12 +39,12 @@ public class Category {
         this.parentId = parentId;
     }
 
-    public Boolean getParent() {
-        return isParent;
+    public Boolean getIsParent() {
+        return this.isParent;
     }
 
-    public void setParent(Boolean parent) {
-        isParent = parent;
+    public void setParent(Boolean IsParent) {
+        this.isParent = isParent;
     }
 
     public Integer getSort() {

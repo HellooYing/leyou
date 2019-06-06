@@ -24,7 +24,7 @@ public class CategoryController {
     public ResponseEntity<List<Category>> queryCategoriesByPid(@RequestParam("pid") Long pid){
         if(pid==null||pid.longValue()<0){
             return ResponseEntity.badRequest().build();//响应400
-        }
+    }
         List<Category> categories=this.categoryService.queryCategoriesByPid(pid);
         if(CollectionUtils.isEmpty(categories)){
             return ResponseEntity.notFound().build();//404
