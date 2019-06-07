@@ -2,6 +2,7 @@ package com.leyou.item.controller;
 
 
 import com.leyou.item.pojo.SpecGroup;
+import com.leyou.item.pojo.SpecParam;
 import com.leyou.item.service.SpecService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,5 +42,21 @@ public class SpecController {
     public ResponseEntity<Void> deleteGroup(@PathVariable("gid") Long gid){
         specService.deleteGroup(gid);
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @GetMapping("params")
+    public ResponseEntity<List<SpecParam>> queryParams(
+            @RequestParam(value = "gid", required = false)Long gid,
+            @RequestParam(value = "cid", required = false)Long cid,
+            @RequestParam(value = "generic", required = false)Boolean generic,
+            @RequestParam(value = "searching", required = false)Boolean searching
+    ){
+
+        List<SpecParam> params = this.specService.queryParams(gid, cid, generic, searching);
+
+        if (CollectionUtils.isEmpty(params)){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(params);
     }
 }

@@ -15,4 +15,7 @@ public interface BrandMapper extends Mapper<Brand> {
 
     @Select("SELECT category_id FROM tb_category_brand WHERE brand_id=#{bid}")
     List<Long> selectCategoryByBid(@Param("bid") Long bid);
+
+    @Select("SELECT b.* from tb_brand b INNER JOIN tb_category_brand cb on b.id=cb.brand_id where cb.category_id=#{cid}")
+    List<Brand> selectBrandByCid(Long cid);
 }
